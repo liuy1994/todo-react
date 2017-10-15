@@ -7,3 +7,12 @@
     flex-grow: 1;
     padding-left:6px;
 }
+.TodoItem .delete{
+    border-radius:50%;
+    display: inline-block;
+    width:32px;
+    height:32px;
+    background:  url("./delete.png") ;
+    background-size:cover;
+
+}

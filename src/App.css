@@ -1,4 +1,5 @@
 .App {
+  margin:24px;
   background: #fff;
   border:1px solid #ddd;
   min-height:360px;
@@ -8,7 +9,6 @@
   box-shadow: 0 0 1em hsla(0,0%,0%,0.15);
 }
 .App>h1{
-  border:1px solid red;
 }
 .App .todoList{
   margin-top:36px;

@@ -4,17 +4,14 @@ import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import 'normalize.css'
 import './reset.css'
+import * as store from './store'
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
             newTodo: '',
-            todoList: [
-                {id:2468354,title:'aahahah'},
-                {id:214332141,title:'年后啊'},
-                {id:623578523867,title:'this is a item'},
-            ]
+            todoList: store.load('todoList') || []
         }
     }
 
@@ -32,7 +29,7 @@ class App extends Component {
         })
         return (
             <div className="App">
-                <h1>TODO - LIST</h1>
+                <h1>TODO</h1>
                 <div className="inputWrapper">
                     <TodoInput
                         content={this.state.newTodo}
@@ -45,6 +42,9 @@ class App extends Component {
                 </ol>
             </div>
         )
+    }
+    componentDidUpdate(){
+        store.save('todoList',this.state.todoList)
     }
     addTodo(e){
         this.state.todoList.push({
