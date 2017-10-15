@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TodoInput from './TodoInput'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+        newTodo:'',
+      todoList:[
+        {id:1,title:"first item"},
+        {id:2,title:"second item"}
+      ]
+    }
+  }
   render() {
+    let todos = this.state.todoList.map((item,index)=>{
+      return (
+        <li>
+            <TodoItem todo={item}/>
+        </li>
+      )
+    })
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>TODO - LIST</h1>
+        <div className="input">
+            <TodoInput content={this.state.newTodo} />
+            <ol>
+                {todos}
+            </ol>
+        </div>
       </div>
     );
   }
