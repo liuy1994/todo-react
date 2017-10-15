@@ -10,15 +10,23 @@ class App extends Component {
         super(props)
         this.state = {
             newTodo: '',
-            todoList: []
+            todoList: [
+                {id:2468354,title:'aahahah'},
+                {id:214332141,title:'年后啊'},
+                {id:623578523867,title:'this is a item'},
+            ]
         }
     }
 
     render() {
-        let todos = this.state.todoList.map((item, index) => {
+        let todos = this.state.todoList.filter((item)=>!item.deleted).map((item, index) => {
             return (
                 <li key={index}>
-                    <TodoItem todo={item}/>
+                    <TodoItem
+                        todo={item}
+                        onToggle={this.toggle.bind(this)}
+                        onDelete={this.delete.bind(this)}
+                    />
                 </li>
             )
         })
@@ -32,7 +40,7 @@ class App extends Component {
                         onSubmit={this.addTodo.bind(this)}
                     />
                 </div>
-                <ol>
+                <ol className="todoList">
                     {todos}
                 </ol>
             </div>
@@ -54,7 +62,14 @@ class App extends Component {
             newTodo: e.target.value,
             todoList:this.state.todoList
         })
-
+    }
+    toggle(e,todo){
+        todo.status = (todo.status === 'completed' ? '' : 'completed')
+        this.setState(this.state)
+    }
+    delete(e,todo){
+        todo.deleted = true
+        this.setState(this.state)
     }
 }
 let id =2

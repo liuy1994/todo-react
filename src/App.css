@@ -2,10 +2,20 @@
   background: #fff;
   border:1px solid #ddd;
   min-height:360px;
+  width:960px;
   min-width:640px;
   padding:12px;
   box-shadow: 0 0 1em hsla(0,0%,0%,0.15);
 }
-
+.App>h1{
+  border:1px solid red;
+}
+.App .todoList{
+  margin-top:36px;
+}
+.App .todoList> li{
+  line-height:3em;
+  border-bottom:1px solid rgba(0,0,0,0.2);
+}
 
 
